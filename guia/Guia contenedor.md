@@ -90,7 +90,8 @@ docker stop [ID_del_contenedor]
 #### b) **Crear el Workflow de GitHub**
 1. Crea una carpeta `.github/workflows` en tu proyecto.
 2. Dentro, crea un archivo `docker-publish.yml` con este contenido:
-   ```yaml
+
+```yaml
    name: Docker Build and Push
 
 on:
