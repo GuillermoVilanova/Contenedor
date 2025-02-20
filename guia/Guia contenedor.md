@@ -156,13 +156,12 @@ docker stop [ID_del_contenedor]
 ### **Estructura Final de tu Proyecto**
 ```
 tu-proyecto/
-│   app.py
-│   dockerfile
-│   requirements.txt
-│
-├───github
-│   └───workflows
-│           docker-publish.yml
+├── app.py
+├── requirements.txt
+├── Dockerfile
+└── .github/
+    └── workflows/
+        └── docker-publish.yml
 ```
 
 ---
