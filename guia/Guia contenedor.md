@@ -127,7 +127,7 @@ jobs:
 1. En tu repositorio de GitHub, ve a **Settings > Secrets > Actions**.
 2. Crea dos secrets:
    - `DOCKER_USERNAME`: Tu usuario de Docker Hub.
-   - `DOCKER_PASSWORD`: [Crea un token aquí](https://hub.docker.com/settings/security). si no funciona pon tu contraseña de dockrhub!
+   - `DOCKER_PASSWORD`: [Crea un token aquí](https://hub.docker.com/settings/security). si no funciona pon tu contraseña de docker!
 
 #### d) **Subir los Archivos a GitHub**
 1. Asegúrate de que tu proyecto tenga esta estructura:
@@ -189,12 +189,3 @@ tu-proyecto/
 - Railway te da un dominio gratis tipo `https://tu-app.up.railway.app`.
 
 ---
-
-### **Resumen de Pasos**
-1. Crear la app (`app.py`, `requirements.txt`, `Dockerfile`).
-2. Probar localmente con Docker.
-3. Crear el archivo `.yml` para GitHub Actions.
-4. Configurar Secrets en GitHub.
-5. Subir los archivos a GitHub.
-6. Verificar que el workflow funciona.
-7. Desplegar en Railway.
