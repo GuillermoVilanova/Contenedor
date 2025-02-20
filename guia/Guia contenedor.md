@@ -16,15 +16,15 @@
 1. Abre tu editor de código y crea un archivo llamado `app.py`.
 2. Copia este código:
    ```python
-   from flask import Flask
-   app = Flask(__name__)
+from flask import Flask
+app = Flask(__name__)
 
-   @app.route('/')
-   def hello():
-       return "¡Hola desde Docker! 🐳"
+@app.route('/')
+def hello():
+    return "¡Hola desde Docker! 🐳"
 
-   if __name__ == '__main__':
-       app.run(host='0.0.0.0', port=5000)
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000)
    ```
 
 #### b) **Archivo `requirements.txt`** (dependencias)
@@ -189,3 +189,87 @@ tu-proyecto/
 - Railway te da un dominio gratis tipo `https://tu-app.up.railway.app`.
 
 ---
+
+
+¡Genial! Si ya tienes tu aplicación Dockerizada y subida a Docker Hub, desplegarla en **Railway** es muy sencillo.
+
+---
+
+### **1. Crear una Cuenta en Railway**
+1. Ve a [Railway](https://railway.app/) y crea una cuenta (puedes usar GitHub, Google o un correo electrónico).
+2. Una vez registrado, serás redirigido al panel de control de Railway.
+
+---
+
+### **2. Crear un Nuevo Proyecto**
+1. En el panel de Railway, haz clic en **New Project**.
+2. Selecciona la opción **Deploy from Docker Hub**.
+
+---
+
+### **3. Conectar Docker Hub**
+1. Railway te pedirá que ingreses el nombre de la imagen que subiste a Docker Hub.
+2. Escribe el nombre de la imagen en este formato:
+   ```
+   tudockerhubusuario/my-flask-app:latest
+   ```
+   - Reemplaza `tudockerhubusuario` con tu nombre de usuario de Docker Hub.
+   - Reemplaza `my-flask-app` con el nombre de tu imagen.
+   - `latest` es la etiqueta (tag) de la imagen.
+
+3. Haz clic en **Deploy**.
+
+---
+
+### **4. Configurar el Puerto**
+1. Railway detectará automáticamente que tu aplicación usa el puerto `5000` (definido en el Dockerfile con `EXPOSE 5000`).
+2. Si necesitas cambiar el puerto, ve a la pestaña **Settings** de tu proyecto en Railway y ajusta la variable de entorno `PORT`.
+
+---
+
+### **5. Acceder a la Aplicación**
+1. Una vez que Railway termine de desplegar tu aplicación, te proporcionará un enlace para acceder a ella.
+2. El enlace tendrá un formato como este: `https://tu-app.up.railway.app`.
+3. Haz clic en el enlace para ver tu aplicación en vivo.
+
+---
+
+### **6. (Opcional) Configurar un Dominio Personalizado**
+Si quieres usar un dominio personalizado en lugar del que proporciona Railway:
+1. Ve a la pestaña **Settings** de tu proyecto.
+2. En la sección **Domains**, agrega tu dominio personalizado.
+3. Sigue las instrucciones para configurar los registros DNS en tu proveedor de dominios.
+
+---
+
+### **7. Verificar el Logs**
+Si algo no funciona correctamente, puedes revisar los logs:
+1. En el panel de Railway, ve a la pestaña **Logs**.
+2. Aquí verás los mensajes de la aplicación y cualquier error que pueda haber ocurrido durante el despliegue.
+
+---
+
+### **8. Actualizar la Aplicación**
+Si haces cambios en tu aplicación y subes una nueva imagen a Docker Hub:
+1. Railway detectará automáticamente la nueva versión y la desplegará.
+2. Si no se actualiza automáticamente, puedes forzar un nuevo despliegue desde el panel de Railway.
+
+---
+
+### **Resumen de Pasos**
+1. Crea una cuenta en Railway.
+2. Crea un nuevo proyecto y selecciona **Deploy from Docker Hub**.
+3. Ingresa el nombre de tu imagen en Docker Hub.
+4. Configura el puerto si es necesario.
+5. Accede a tu aplicación usando el enlace proporcionado por Railway.
+
+---
+
+### **Notas Importantes**
+- Railway ofrece un **plan gratuito** con límites generosos, ideal para proyectos pequeños.
+- Si tu aplicación necesita variables de entorno (como claves de API), puedes configurarlas en la pestaña **Variables** de Railway.
+- Railway maneja automáticamente el escalado y los certificados HTTPS.
+
+---
+
+¿Necesitas más ayuda con esto? 😊 ¡Avísame si encuentras algún otro problema!
