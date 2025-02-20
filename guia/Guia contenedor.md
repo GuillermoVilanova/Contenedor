@@ -92,27 +92,41 @@ docker stop [ID_del_contenedor]
 2. Dentro, crea un archivo `docker-publish.yml` con este contenido:
    ```yaml
    name: Docker Build and Push
-   on: [push]
-   jobs:
-     build-and-push:
-       runs-on: ubuntu-latest
-       steps:
-         - uses: actions/checkout@v4
-         - uses: docker/login-action@v3
-           with:
-             username: ${{ secrets.DOCKERHUB_USERNAME }}
-             password: ${{ secrets.DOCKERHUB_TOKEN }}
-         - uses: docker/build-push-action@v5
-           with:
-             push: true
-             tags: ${{ secrets.DOCKERHUB_USERNAME }}/my-flask-app:latest
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build and Push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: ${{ secrets.DOCKER_USERNAME }}/my-flask-app:latest
+
+      - name: List files for debugging
+        run: ls -R
+
    ```
 
 #### c) **Configurar Secrets en GitHub**
 1. En tu repositorio de GitHub, ve a **Settings > Secrets > Actions**.
 2. Crea dos secrets:
-   - `DOCKERHUB_USERNAME`: Tu usuario de Docker Hub.
-   - `DOCKERHUB_TOKEN`: [Crea un token aquí](https://hub.docker.com/settings/security).
+   - `DOCKER_USERNAME`: Tu usuario de Docker Hub.
+   - `DOCKER_PASSWORD`: [Crea un token aquí](https://hub.docker.com/settings/security). si no funciona pon tu contraseña de dockrhub!
 
 #### d) **Subir los Archivos a GitHub**
 1. Asegúrate de que tu proyecto tenga esta estructura:
@@ -142,6 +156,7 @@ docker stop [ID_del_contenedor]
 3. Deberías ver un workflow llamado "Docker Build and Push" en ejecución.
 4. Si todo está bien, verás una marca verde (✅) cuando termine.
 
+![alt text](image-5.png)
 ---
 
 ### **7. Desplegar en Railway**
