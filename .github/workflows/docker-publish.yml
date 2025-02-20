@@ -23,3 +23,6 @@ jobs:
           context: .
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/my-flask-app:latest
+
+      - name: List files for debugging
+        run: ls -R
