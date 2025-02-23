@@ -214,17 +214,12 @@ tu-proyecto/
    - Reemplaza `my-flask-app` con el nombre de tu imagen.
    - `latest` es la etiqueta (tag) de la imagen.
 
-3. Haz clic en **Deploy**. Si te da error, hay que especificar la ruta donde se encuentran los comandos de inicio. 
-
-```
-gunicorn main:app
-```
-
-En mi caso ```gunicorn dockerfile:app```
+3. Haz clic en **Deploy**. Si te da error, es que no logra encontrar el comando de inicio.
+En mi caso ```gunicorn --bind 0.0.0.0:5000 app:app```
 
 ![alt text](image-8.png)
 ![alt text](image-9.png)
-![alt text](image-10.png)
+
 ---
 
 ### **4. Configurar el Puerto**
