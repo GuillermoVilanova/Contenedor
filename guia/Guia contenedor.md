@@ -15,17 +15,18 @@
 #### a) **Archivo `app.py`** (la app web)
 1. Abre tu editor de código y crea un archivo llamado `app.py`.
 2. Copia este código:
-   ```python
-from flask import Flask
-app = Flask(__name__)
 
-@app.route('/')
-def hello():
-    return "¡Hola desde Docker! 🐳"
+    ```python
+    from flask import Flask
+    app = Flask(__name__)
 
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
-   ```
+    @app.route('/')
+    def hello():
+        return "¡Hola desde Docker! 🐳"
+
+    if __name__ == '__main__':
+        app.run(host='0.0.0.0', port=5000)
+    ```
 
 #### b) **Archivo `requirements.txt`** (dependencias)
 1. Crea otro archivo llamado `requirements.txt`.
@@ -160,15 +161,6 @@ jobs:
 ![alt text](image-5.png)
 ---
 
-### **7. Desplegar en Railway**
-1. Ingresa a [Railway](https://railway.app) y crea una cuenta.
-2. Haz clic en **New Project > Deploy from Docker Hub**.
-3. Escribe el nombre de tu imagen: `tudockerhubusuario/my-flask-app:latest`.
-4. Railway desplegará automáticamente tu app.
-5. ¡Listo! En la pestaña "Settings" de Railway encontrarás el enlace para acceder a tu app.
-
----
-
 ### **Estructura Final de tu Proyecto**
 ```
 tu-proyecto/
@@ -191,7 +183,11 @@ tu-proyecto/
 ---
 
 
-¡Genial! Si ya tienes tu aplicación Dockerizada y subida a Docker Hub, desplegarla en **Railway** es muy sencillo.
+<div style="page-break-after: always;"></div>
+
+
+
+### **Desplegar en Railway**
 
 ---
 
@@ -205,11 +201,12 @@ tu-proyecto/
 1. En el panel de Railway, haz clic en **New Project**.
 2. Selecciona la opción **Deploy from Docker Hub**.
 
+![alt text](image-7.png)
 ---
 
 ### **3. Conectar Docker Hub**
-1. Railway te pedirá que ingreses el nombre de la imagen que subiste a Docker Hub.
-2. Escribe el nombre de la imagen en este formato:
+1. Si has enlazado tu cuenta de GitHub te saldrá en la lista, sino Railway te pedirá que ingreses el nombre de la imagen que subiste a Docker Hub.
+2. Para ello escribe el nombre de la imagen en este formato:
    ```
    tudockerhubusuario/my-flask-app:latest
    ```
