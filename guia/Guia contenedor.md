@@ -215,7 +215,7 @@ tu-proyecto/
    - `latest` es la etiqueta (tag) de la imagen.
 
 3. Haz clic en **Deploy**. Si te da error, es que no logra encontrar el comando de inicio.
-En mi caso ```gunicorn --bind 0.0.0.0:5000 app:app```
+En mi caso lo forzamos poniendo ```FROM python:3.11-slim  WORKDIR /app  COPY requirements.txt . RUN pip install -r requirements.txt  COPY app.py .  EXPOSE 5000  CMD ["gunicorn", "--bind", "0.0.0.0:5000", "--workers", "4", "app:app"]```
 
 ![alt text](image-8.png)
 ![alt text](image-9.png)
@@ -230,6 +230,8 @@ En mi caso ```gunicorn --bind 0.0.0.0:5000 app:app```
 
 ### **5. Acceder a la Aplicación**
 1. Una vez que Railway termine de desplegar tu aplicación, te proporcionará un enlace para acceder a ella.
+![alt text](image-12.png)
+![alt text](image-11.png)
 2. El enlace tendrá un formato como este: `https://tu-app.up.railway.app`.
 3. Haz clic en el enlace para ver tu aplicación en vivo.
 
@@ -256,21 +258,3 @@ Si haces cambios en tu aplicación y subes una nueva imagen a Docker Hub:
 2. Si no se actualiza automáticamente, puedes forzar un nuevo despliegue desde el panel de Railway.
 
 ---
-
-### **Resumen de Pasos**
-1. Crea una cuenta en Railway.
-2. Crea un nuevo proyecto y selecciona **Deploy from Docker Hub**.
-3. Ingresa el nombre de tu imagen en Docker Hub.
-4. Configura el puerto si es necesario.
-5. Accede a tu aplicación usando el enlace proporcionado por Railway.
-
----
-
-### **Notas Importantes**
-- Railway ofrece un **plan gratuito** con límites generosos, ideal para proyectos pequeños.
-- Si tu aplicación necesita variables de entorno (como claves de API), puedes configurarlas en la pestaña **Variables** de Railway.
-- Railway maneja automáticamente el escalado y los certificados HTTPS.
-
----
-
-¿Necesitas más ayuda con esto? 😊 ¡Avísame si encuentras algún otro problema!
