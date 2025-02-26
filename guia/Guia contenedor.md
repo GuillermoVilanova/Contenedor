@@ -199,14 +199,14 @@ tu-proyecto/
 
 ### **2. Crear un Nuevo Proyecto**
 1. En el panel de Railway, haz clic en **New Project**.
-2. Selecciona la opción **Deploy from Docker Hub**.
-
+2. Selecciona la opción con click derecho **Deploy Docker Image**. 
 ![alt text](image-7.png)
 ---
 
 ### **3. Conectar Docker Hub**
 1. Si has enlazado tu cuenta de GitHub te saldrá en la lista, sino Railway te pedirá que ingreses el nombre de la imagen que subiste a Docker Hub.
-2. Para ello escribe el nombre de la imagen en este formato:
+![alt text](image-15.png)
+2. Copia y pega el nombre de tu proyecto de: https://hub.docker.com/repositories/, en mi caso `guillermovilanova/my-flask-app`
    ```
    tudockerhubusuario/my-flask-app:latest
    ```
@@ -215,10 +215,7 @@ tu-proyecto/
    - `latest` es la etiqueta (tag) de la imagen.
 
 3. Haz clic en **Deploy**. Si te da error, es que no logra encontrar el comando de inicio.
-En mi caso lo forzamos poniendo ```FROM python:3.11-slim  WORKDIR /app  COPY requirements.txt . RUN pip install -r requirements.txt  COPY app.py .  EXPOSE 5000  CMD ["gunicorn", "--bind", "0.0.0.0:5000", "--workers", "4", "app:app"]```
-
-![alt text](image-8.png)
-![alt text](image-9.png)
+En mi caso lo forzamos poniendo
 
 ---
 
@@ -231,8 +228,9 @@ En mi caso lo forzamos poniendo ```FROM python:3.11-slim  WORKDIR /app  COPY req
 ### **5. Acceder a la Aplicación**
 1. Una vez que Railway termine de desplegar tu aplicación, te proporcionará un enlace para acceder a ella.
 ![alt text](image-12.png)
-![alt text](image-11.png)
-2. El enlace tendrá un formato como este: `https://tu-app.up.railway.app`.
+![alt text](image-13.png)
+![alt text](image-14.png)
+2. El enlace tendrá un formato como este: `https://my-flask-app-production-70ce.up.railway.app/`.
 3. Haz clic en el enlace para ver tu aplicación en vivo.
 
 ---
